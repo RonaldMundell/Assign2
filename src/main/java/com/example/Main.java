@@ -59,10 +59,10 @@ public class Main {
     String sql = "SELECT * FROM rectangles";
     ResultSet rs;
     ArrayList<String> output = new ArrayList<String>();
-    while (rs.next()){
+    //while (rs.next()){
       //String name = rs.getName();
       //String color = rs.getBgcolor();
-    }
+   // }
     }
     return "index";
     } catch (Exception e) {
