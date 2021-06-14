@@ -55,7 +55,7 @@ public class Main {
   String index() {
     return "index";
   }
-
+  /*
   @GetMapping{
     path = "/rectangle";
   }
@@ -76,6 +76,7 @@ public class Main {
     return "redirect:/person/index"
   }
 
+  */
   @RequestMapping("/db")
   String db(Map<String, Object> model) {
     try (Connection connection = dataSource.getConnection()) {
