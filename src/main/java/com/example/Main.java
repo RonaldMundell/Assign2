@@ -57,12 +57,12 @@ public class Main {
     Statement stmt = connection.createStatement();
     stmt.executeUpdate("CREATE TABLE IF NOT EXISTS rectangles (id serial, name varChar(20), width varChar(10), height varChar(10), color varChar(10))");
     String sql = "SELECT * FROM rectangles";
-    ResultSet rs = stmt.executeUpdate(sql);
+    ResultSet rs;
     ArrayList<String> output = new ArrayList<String>();
     if(rs.isEmpty() == false){
     while (rs.next()){
-      String name = rs.getName();
-      String color = rs.getBgcolor();
+      //String name = rs.getName();
+      //String color = rs.getBgcolor();
     }
     }
     return "index";
