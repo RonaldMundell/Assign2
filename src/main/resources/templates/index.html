@@ -9,8 +9,10 @@
 <body>
 <h1>Rectangles</h1>
 <form action="#" method="post" th:action="@{/newrectangle}" th:object="${rectangles}">
-<table id="rectangles">
-</table>
+  <table id="TheTable">
+    <tr><th>ID</th><th>Name</th><th>Color</th><th></th></tr>
+    
+  </table>
 <input type="submit" value="New Rectangle"/>
 </form>
 </body>
