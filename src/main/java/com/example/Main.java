@@ -53,9 +53,20 @@ public class Main {
 
   @RequestMapping("/")
   String index(Map<String, Object> model) {
-    Object rectangles = new Object();
-    model.put("index", rectangles);
-    return "index";
+    try (Connection connection = dataSource.getConnection()) {
+    Statement stmt = connection.createStatement();
+    String sql = "SELECT * FROM rectangle";
+    ResultSet rs = stmt.executeUpdate(sql)
+    ArrayList<String> output = new ArrayList<String>();
+    while (rs.next()){
+      String name = rs.getName();
+      String color = rs.getBgcolor();
+    }
+    return "index"
+    } catch (Exception e) {
+      model.put("message", e.getMessage());
+    return "error";
+    }
   }
   
   @GetMapping(path = "/newrectangle")
@@ -70,13 +81,16 @@ public class Main {
     consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE}
   )
   public String handleBrowserRectangleSubmit(Rectangle rectangle) throws Exception {
-    System.out.println(rectangle.getName());
-    return "redirect:/newrectangle/success";
-  }
-
-  @GetMapping(path = "/newrectangle/success")
-  public String getRectangleSuccess(){
-    return "success";
+    try (Connection connection = dataSource.getConnection()) {
+    Statement stmt = connection.createStatement();
+    stmt.executeUpdate("CREATE TABLE IF NOT EXISTS rectangles (id serial, name varChar(20), width Integer, height Integer, color varChar(10) ")
+    String sql = "INSERT INTO rectangles (name, width, height, color) VALUES ('"+ rectangle.getName() +"', '" + rectangle.getWidth() + "', '"
+     + rectangle.getHeight() + "', '" + rectangle.getBgcolor() + "');"
+    return "redirect:/";
+    } catch (Exception e) {
+      model.put("message", e.getMessage());
+    return "error";
+    }
   }
 
   @PostMapping(
