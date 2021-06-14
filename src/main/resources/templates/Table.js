@@ -5,7 +5,7 @@ function CreateTable(Table){
         if(i == 0){
            tables =+ "<tr>" 
         }
-        tables =+ '<td><Div id="'+rectangle.getName()+'" background-color="'+rectangle.getBgcolor()+'" width='+rectangle.getWidth()+
+        tables =+ '<td><Div onclick="EditRectangle('+rectangle.getName+')" id="'+rectangle.getName()+'" background-color="'+rectangle.getBgcolor()+'" width='+rectangle.getWidth()+
         '" height='+rectangle.getHeight()+'"><p>'+rectangle.getName()+"</p><Div/></td>"
         i++;
         if(i == 3){
@@ -19,4 +19,7 @@ function CreateTable(Table){
     }else{
     table.innerHTML = tables;
     }
+}
+function EditRectangle(name){
+    
 }
