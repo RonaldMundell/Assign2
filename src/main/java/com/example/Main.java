@@ -75,7 +75,7 @@ public class Main {
   }
 
   @PostMapping(
-    path = "/newrectangle",
+    path = "/newrectangle"
   )
   public String rectanglePageShift() throws Exception {
     return "redirect:/rectange";
