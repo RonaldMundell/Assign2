@@ -56,9 +56,9 @@ public class Main {
     return "index";
   }
   
-  @GetMapping{
+  @GetMapping(
     path = "/rectangle"
-  }
+  )
 
   public String getRectangleForm(Map<String, Object> model){
     Rectangle rectangle = new Rectangle();
