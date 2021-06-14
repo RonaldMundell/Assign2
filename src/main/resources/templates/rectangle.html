@@ -8,8 +8,8 @@
 <body>
     <form action="#" method="post" th:action="@{/rectangle}" th:object="${rectangle}">
         <input type="text" th:field=*{name} placeholder="Name"> <br>
-        <input type="number" th:field=*{height} placeholder="height"> <br>
-        <input type="number" th:field=*{width} placeholder="width"> <br>
+        <input type="number" min=0 th:field=*{height} placeholder="height"> <br>
+        <input type="number" min=0 th:field=*{width} placeholder="width"> <br>
         <input type="color" th:field=*{bgcolor} placeholder="back ground color"> <br>
         <input type="submit" value="Submit Rectangle">
     </form>
