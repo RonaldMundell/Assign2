@@ -46,7 +46,7 @@ public class Main {
   public String getRectangleForm(Map<String, Object> model){
     Rectangle rectangle = new Rectangle();  
     model.put("rectangle", rectangle);
-    return "rectangle";
+    return "newrectangle";
   }
 
   @PostMapping(
@@ -60,7 +60,7 @@ public class Main {
       String sql = "INSERT INTO rectangles (name, height, width, color) VALUES ('" + rectangle.getName() + "','" + rectangle.getHeight() + "','" + rectangle.getWidth() + "','" + rectangle.getBgcolor() + "')";
       stmt.executeUpdate(sql);
       System.out.println(rectangle.getName());
-      return "redirect:/newrectangle/rectangle";
+      return "redirect:/rectangle";
     } catch (Exception e) {
       model.put("message", e.getMessage());
       return "error";
