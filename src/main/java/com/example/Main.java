@@ -85,7 +85,7 @@ public class Main {
     path = "/newrectangle"
   )
   public String rectanglePageShift() throws Exception {
-    return "redirect:/rectange";
+    return "redirect:/rectangle";
   }
 
   @RequestMapping("/db")
