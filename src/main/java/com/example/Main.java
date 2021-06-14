@@ -36,7 +36,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Map;
-import Rectangle;
 
 @Controller
 @SpringBootApplication
@@ -62,7 +61,7 @@ public class Main {
   }
 
   public String getRectangleForm(Map<String, Object> model){
-    Rectangle rectangle = new Rectangle(); //create rectangle
+    Rectangle rectangle = new Rectangle();
     model.put("rectangle", rectange)
     return "rectangle";
   }
