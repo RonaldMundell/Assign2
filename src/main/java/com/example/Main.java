@@ -52,8 +52,7 @@ public class Main {
   }
 
   @RequestMapping("/")
-  String index(Map<String, Object> model) {
-
+  String index() {
     return "index";
   }
 
