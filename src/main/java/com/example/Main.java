@@ -53,7 +53,7 @@ public class Main {
 
   @RequestMapping("/")
   String index(Map<String, Object> model) {
-    Object rectangles = new Array();
+    Object rectangles = new Object());
     model.put("index", rectangles);
     return "index";
   }
