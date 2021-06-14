@@ -59,18 +59,16 @@ public class Main {
   @GetMapping(
     path = "/rectangle"
   )
-
   public String getRectangleForm(Map<String, Object> model){
     Rectangle rectangle = new Rectangle();
-    model.put("rectangle", rectange)
+    model.put("rectangle", rectange);
     return "rectangle";
   }
 
   @PostMapping(
-    path = "/rectangle"
+    path = "/rectangle",
     consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE}
   )
-
   public String handleBrowserRectangleSubmit(Rectangle rectangle) throws Exception {
     System.out.println(rectange.getName());
     return "redirect:/person/index";
