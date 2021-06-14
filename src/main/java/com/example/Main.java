@@ -57,12 +57,14 @@ public class Main {
     Statement stmt = connection.createStatement();
     stmt.executeUpdate("CREATE TABLE IF NOT EXISTS rectangles (id serial, name varChar(20), width varChar(10), height varChar(10), color varChar(10))");
     String sql = "SELECT * FROM rectangles";
-    //ResultSet rs = stmt.executeUpdate(sql);
+    ResultSet rs = stmt.executeUpdate(sql);
     ArrayList<String> output = new ArrayList<String>();
-    //while (rs.next()){
-      //String name = rs.getName();
-      //String color = rs.getBgcolor();
-   // }
+    if(rs.isEmpty() == false){
+    while (rs.next()){
+      String name = rs.getName();
+      String color = rs.getBgcolor();
+    }
+    }
     return "index";
     } catch (Exception e) {
       model.put("message", e.getMessage());
@@ -72,13 +74,13 @@ public class Main {
   
   @GetMapping(path = "/newrectangle")
   public String getRectangleForm(Map<String, Object> model){
-    Rectangle rectangle = new Rectangle();
-    model.put("newrectangle", rectangle);
+    Rectangle newrectangle = new Rectangle();
+    model.put("newrectangle", newrectangle);
     return "newrectangle";
   }
 
   @PostMapping(
-    path = "/newrectangle",
+    path = "/success",
     consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE}
   )
   public String handleBrowserRectangleSubmit(Rectangle rectangle) throws Exception {
