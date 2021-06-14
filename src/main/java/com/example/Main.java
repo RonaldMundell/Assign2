@@ -58,7 +58,7 @@ public class Main {
     return "index";
   }
   
-  @GetMapping(path = "/rectangle")
+  @GetMapping(path = "/newrectangle")
   public String getRectangleForm(Map<String, Object> model){
     Rectangle rectangle = new Rectangle();
     model.put("rectangle", rectangle);
@@ -71,10 +71,10 @@ public class Main {
   )
   public String handleBrowserRectangleSubmit(Rectangle rectangle) throws Exception {
     System.out.println(rectangle.getName());
-    return "redirect:/rectangle/success";
+    return "redirect:/newrectangle/success";
   }
 
-  @GetMapping(path = "/rectangle/success")
+  @GetMapping(path = "/newrectangle/success")
   public String getRectangleSuccess(){
     return "success";
   }
