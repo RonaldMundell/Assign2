@@ -74,7 +74,7 @@ public class Main {
     return "redirect:/rectangle/success";
   }
 
-  @GetMapping(path = "/rectaangle/success")
+  @GetMapping(path = "/rectangle/success")
   public String getRectangleSuccess(){
     return "success";
   }
