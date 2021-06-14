@@ -1,19 +1,3 @@
-/*
- * Copyright 2002-2014 the original author or authors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.example;
 
 import com.zaxxer.hikari.HikariConfig;
@@ -53,52 +37,40 @@ public class Main {
 
   @RequestMapping("/")
   String index(Map<String, Object> model) {
-    try (Connection connection = dataSource.getConnection()) {
-    Statement stmt = connection.createStatement();
-    stmt.executeUpdate("CREATE TABLE IF NOT EXISTS rectangles (id serial, name varChar(20), width varChar(10), height varChar(10), color varChar(10))");
-    String sql = "SELECT * FROM rectangles";
-    ResultSet rs;
-    ArrayList<String> output = new ArrayList<String>();
-    //while (rs.next()){
-      //String name = rs.getName();
-      //String color = rs.getBgcolor();
-   // }
-    }
     return "index";
-    } catch (Exception e) {
-      model.put("message", e.getMessage());
-    return "error";
-    }
-  }
-  
-  @GetMapping(path = "/newrectangle")
-  public String getRectangleForm(Map<String, Object> model){
-    Rectangle newrectangle = new Rectangle();
-    model.put("newrectangle", newrectangle);
-    return "newrectangle";
   }
 
-  @PostMapping(
-    path = "/success",
-    consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE}
-  )
-  public String handleBrowserRectangleSubmit(Rectangle rectangle) throws Exception {
-    try (Connection connection = dataSource.getConnection()) {
-    Statement stmt = connection.createStatement();
-    String sql = "INSERT INTO rectangles (name, width, height, color) VALUES ('"+ rectangle.getName() +"', '" + rectangle.getWidth() + "', '"
-     + rectangle.getHeight() + "', '" + rectangle.getBgcolor() + "');";
-    return "redirect:/";
-    } catch (Exception e) {
-      //model.put("message", e.getMessage());
-    return "error";
-    }
-  }
-
-  @PostMapping(
+  @GetMapping(
     path = "/newrectangle"
   )
-  public String newrectanglePage() throws Exception {
-    return "redirect:/newrectangle";
+  public String getRectangleForm(Map<String, Object> model){
+    Rectangle rectangle = new Rectangle();  
+    model.put("rectangle", rectangle);
+    return "rectangle";
+  }
+
+  @PostMapping(
+    path = "/newrectangle",
+    consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE}
+  )
+  public String handleBrowserRectangleSubmit(Map<String, Object> model, Rectangle rectangle) throws Exception {
+    try (Connection connection = dataSource.getConnection()) {
+      Statement stmt = connection.createStatement();
+      stmt.executeUpdate("CREATE TABLE IF NOT EXISTS rectangles (id serial, name varchar(20), height varchar(20), width varchar(20), color varchar(20))");
+      String sql = "INSERT INTO rectangles (name, height, width, color) VALUES ('" + rectangle.getName() + "','" + rectangle.getHeight() + "','" + rectangle.getWidth() + "','" + rectangle.getBgcolor() + "')";
+      stmt.executeUpdate(sql);
+      System.out.println(rectangle.getName());
+      return "redirect:/";
+    } catch (Exception e) {
+      model.put("message", e.getMessage());
+      return "error";
+    }
+
+  }
+
+  @GetMapping("/rectangle")
+  public String getRectangleSelected(){
+    return "rectangle";
   }
 
   @RequestMapping("/db")
@@ -134,3 +106,4 @@ public class Main {
   }
 
 }
+
