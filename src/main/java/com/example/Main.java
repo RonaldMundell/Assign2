@@ -56,12 +56,12 @@ public class Main {
     return "index";
   }
   
-  @GetMapping(
+  @RequestMapping(
     path = "/rectangle"
   )
   public String getRectangleForm(Map<String, Object> model){
     Rectangle rectangle = new Rectangle();
-    //model.put("rectangle", rectangle);
+    model.put("rectangle", rectangle);
     return "rectangle";
   }
 
@@ -77,7 +77,7 @@ public class Main {
   @PostMapping(
     path = "/newrectangle"
   )
-  public String rectanglePageShift() throws Exception {
+  public String newrectanglePage() throws Exception {
     return "redirect:/rectangle";
   }
 
