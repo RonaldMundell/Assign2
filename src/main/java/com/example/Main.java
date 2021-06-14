@@ -59,7 +59,6 @@ public class Main {
     String sql = "SELECT * FROM rectangles";
     ResultSet rs;
     ArrayList<String> output = new ArrayList<String>();
-    if(rs.isEmpty() == false){
     while (rs.next()){
       //String name = rs.getName();
       //String color = rs.getBgcolor();
