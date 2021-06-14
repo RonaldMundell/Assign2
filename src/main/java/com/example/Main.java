@@ -71,7 +71,14 @@ public class Main {
   )
   public String handleBrowserRectangleSubmit(Rectangle rectangle) throws Exception {
     System.out.println(rectangle.getName());
-    return "redirect:/rectangle/index";
+    return "redirect:rectangle/index";
+  }
+
+  @PostMapping(
+    path = "/newrectangle",
+  )
+  public String rectanglePageShift() throws Exception {
+    return "redirect:/rectange";
   }
 
   @RequestMapping("/db")
