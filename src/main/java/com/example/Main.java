@@ -56,7 +56,7 @@ public class Main {
     try (Connection connection = dataSource.getConnection()) {
     Statement stmt = connection.createStatement();
     stmt.executeUpdate("CREATE TABLE IF NOT EXISTS rectangles (id serial, name varChar(20), width varChar(10), height varChar(10), color varChar(10))");
-    String sql = "SELECT * FROM rectangle";
+    String sql = "SELECT * FROM rectangles";
     ResultSet rs = stmt.executeUpdate(sql);
     ArrayList<String> output = new ArrayList<String>();
     while (rs.next()){
