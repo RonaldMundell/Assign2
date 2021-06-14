@@ -61,7 +61,7 @@ public class Main {
   )
   public String getRectangleForm(Map<String, Object> model){
     Rectangle rectangle = new Rectangle();
-    model.put("rectangle", rectange);
+    model.put("rectangle", rectangle);
     return "rectangle";
   }
 
@@ -70,7 +70,7 @@ public class Main {
     consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE}
   )
   public String handleBrowserRectangleSubmit(Rectangle rectangle) throws Exception {
-    System.out.println(rectange.getName());
+    System.out.println(rectangle.getName());
     return "redirect:/person/index";
   }
 

@@ -2,8 +2,8 @@ package com.example;
 
 public class Rectangle {
     private String name;
-    private Integer height;
-    private Integer width;
+    private String height;
+    private String width;
     private String bgcolor;
 
     public String getName() {
@@ -25,10 +25,10 @@ public class Rectangle {
     public String setBGcolor(String bgc) {
         this.bgcolor = bgc;
     }
-    public String setHeight(int h) {
+    public String setHeight(String h) {
         this.height = h;
     }
-    public String setWidth(int w) {
+    public String setWidth(String w) {
         this.width = w;
     }
 }
