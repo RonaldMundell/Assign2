@@ -52,7 +52,10 @@ public class Main {
   }
 
   @RequestMapping("/")
-  String index() {
+  String index(Map<String, Object> model) {
+    Array rectangle = new Array();
+    
+    model.put("index", rectangles)
     return "index";
   }
   
