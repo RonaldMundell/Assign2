@@ -70,6 +70,7 @@ public class Main {
     consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE}
   )
   public String handleBrowserRectangleSubmit(Rectangle rectangle) throws Exception {
+    System.out.println(rectangle.getName());
     return "redirect:/";
   }
 
