@@ -71,14 +71,7 @@ public class Main {
   )
   public String handleBrowserRectangleSubmit(Rectangle rectangle) throws Exception {
     System.out.println(rectangle.getName());
-    return "redirect:/index";
-  }
-
-  @GetMapping(
-    path="/index"
-  )
-  public String getIndex(){
-    return "index";
+    return "redirect:/";
   }
 
   @PostMapping(
