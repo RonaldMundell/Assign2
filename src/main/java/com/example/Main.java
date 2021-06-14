@@ -78,7 +78,7 @@ public class Main {
     path="/index"
   )
   public String getIndex(){
-    return "index"
+    return "index";
   }
 
   @PostMapping(
