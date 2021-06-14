@@ -2,8 +2,8 @@ package com.example;
 
 public class Rectangle {
     private String name;
-    private int height;
-    private int width;
+    private Integer height;
+    private Integer width;
     private String bgcolor;
 
     public String getName() {
