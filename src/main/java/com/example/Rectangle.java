@@ -19,16 +19,16 @@ public class Rectangle {
         return this.width;
     }
 
-     public String setName(String n) {
+     public setName(String n) {
         this.name = n;
     }
-    public String setBGcolor(String bgc) {
+    public setBGcolor(String bgc) {
         this.bgcolor = bgc;
     }
-    public String setHeight(String h) {
+    public setHeight(String h) {
         this.height = h;
     }
-    public String setWidth(String w) {
+    public setWidth(String w) {
         this.width = w;
     }
 }
