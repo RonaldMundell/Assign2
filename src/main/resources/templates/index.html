@@ -7,6 +7,11 @@
 </head>
 <body>
 <h1>Rectangles</h1>
-<input type="button" value="New Rectangle" href="/rectangle"/>
+<form action="#" method="post" th:action="@{/rectangle}" th:object="${rectangle">
+<table>
+  <tr> <td></td> <td></td> <td></td> </tr>
+</table>
+<input type="submit" value="New Rectangle"/>
+</form>
 </body>
 </html>
