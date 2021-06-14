@@ -55,6 +55,7 @@ public class Main {
   String index(Map<String, Object> model) {
     try (Connection connection = dataSource.getConnection()) {
     Statement stmt = connection.createStatement();
+    stmt.executeUpdate("CREATE TABLE IF NOT EXISTS rectangles (id serial, name varChar(20), width varChar(10), height varChar(10), color varChar(10))");
     String sql = "SELECT * FROM rectangle";
     ResultSet rs = stmt.executeUpdate(sql);
     ArrayList<String> output = new ArrayList<String>();
@@ -83,7 +84,6 @@ public class Main {
   public String handleBrowserRectangleSubmit(Rectangle rectangle) throws Exception {
     try (Connection connection = dataSource.getConnection()) {
     Statement stmt = connection.createStatement();
-    stmt.executeUpdate("CREATE TABLE IF NOT EXISTS rectangles (id serial, name varChar(20), width Integer, height Integer, color varChar(10) ");
     String sql = "INSERT INTO rectangles (name, width, height, color) VALUES ('"+ rectangle.getName() +"', '" + rectangle.getWidth() + "', '"
      + rectangle.getHeight() + "', '" + rectangle.getBgcolor() + "');";
     return "redirect:/";
