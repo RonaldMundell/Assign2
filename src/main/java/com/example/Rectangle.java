@@ -9,7 +9,7 @@ public class Rectangle {
     public String getName() {
         return this.name;
     }
-    public String getBGcolor() {
+    public String getBgcolor() {
         return this.bgcolor;
     }
     public String getHeight() {
@@ -22,7 +22,7 @@ public class Rectangle {
     public void setName(String n) {
         this.name = n;
     }
-    public void setBGcolor(String bgc) {
+    public void setBgcolor(String bgc) {
         this.bgcolor = bgc;
     }
     public void setHeight(String h) {
