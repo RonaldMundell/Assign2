@@ -36,6 +36,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Map;
+import Rectangle;
 
 @Controller
 @SpringBootApplication
@@ -57,13 +58,13 @@ public class Main {
   }
   
   @GetMapping{
-    path = "/rectangle";
+    path = "/rectangle"
   }
 
   public String getRectangleForm(Map<String, Object> model){
     Rectangle rectangle = new Rectangle(); //create rectangle
     model.put("rectangle", rectange)
-    return "rectangle"
+    return "rectangle";
   }
 
   @PostMapping(
@@ -73,7 +74,7 @@ public class Main {
 
   public String handleBrowserRectangleSubmit(Rectangle rectangle) throws Exception {
     System.out.println(rectange.getName());
-    return "redirect:/person/index"
+    return "redirect:/person/index";
   }
 
   @RequestMapping("/db")
