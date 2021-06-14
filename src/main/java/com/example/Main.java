@@ -61,12 +61,12 @@ public class Main {
   @GetMapping(path = "/newrectangle")
   public String getRectangleForm(Map<String, Object> model){
     Rectangle rectangle = new Rectangle();
-    model.put("rectangle", rectangle);
-    return "rectangle";
+    model.put("newrectangle", rectangle);
+    return "newrectangle";
   }
 
   @PostMapping(
-    path = "/rectangle",
+    path = "/newrectangle",
     consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE}
   )
   public String handleBrowserRectangleSubmit(Rectangle rectangle) throws Exception {
@@ -83,7 +83,7 @@ public class Main {
     path = "/newrectangle"
   )
   public String newrectanglePage() throws Exception {
-    return "redirect:/rectangle";
+    return "redirect:/newrectangle";
   }
 
   @RequestMapping("/db")
