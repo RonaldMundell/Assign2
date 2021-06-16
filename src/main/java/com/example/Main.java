@@ -37,6 +37,8 @@ public class Main {
 
   @RequestMapping("/")
   String index(Map<String, Object> model) {
+    ArrayList rectangles = new ArrayList();
+    model.put("rectangles", rectangles);
     return "index";
   }
 
@@ -69,7 +71,9 @@ public class Main {
   }
 
   @GetMapping("/rectangle")
-  public String getRectangleSelected(){
+  public String getRectangleSelected(Map<String, Object> model){
+    Rectangle rectangle = new Rectangle();  
+    model.put("rectangle", rectangle);
     return "rectangle";
   }
 
