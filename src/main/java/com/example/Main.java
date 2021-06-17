@@ -10,6 +10,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import jdk.internal.org.objectweb.asm.Handle;
+
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.MediaType;
 
@@ -62,7 +64,7 @@ public class Main {
       String sql = "INSERT INTO rectangles (name, height, width, color) VALUES ('" + rectangle.getName() + "','" + rectangle.getHeight() + "','" + rectangle.getWidth() + "','" + rectangle.getBgcolor() + "')";
       stmt.executeUpdate(sql);
       System.out.println(rectangle.getName());
-      return "redirect:/rectangle";
+      return "redirect:/newrectangle";
     } catch (Exception e) {
       model.put("message", e.getMessage());
       return "error";
@@ -75,6 +77,22 @@ public class Main {
     Rectangle rectangle = new Rectangle();  
     model.put("rectangle", rectangle);
     return "rectangle";
+  }
+  
+  @PostMapping(
+    path = "rectangle",
+    consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE}
+  )
+  public String handleBrowserRectangleSaving(Map<String, Object> model, Rectangle rectangle) throws Exception {
+      try (Connection connection = dataSource.getConnection()) {
+        Statement stmt = connection.createStatement();
+        String sql = "UPDATE";
+        stmt.executeUpdate(sql);
+        return "redirect:/rectangle";
+      } catch (Exception e) {
+        model.put("message", e.getMessage());
+        return "error";
+      }
   }
 
 
