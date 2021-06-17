@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import jdk.internal.org.objectweb.asm.Handle;
+import jdk.internal.org.*;
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.MediaType;
@@ -74,7 +74,8 @@ public class Main {
 
   @GetMapping("/rectangle")
   public String getRectangleSelected(Map<String, Object> model){
-    Rectangle rectangle = model.get("newrectangle");  
+    System.out.println(model.get("newrectangle"));
+    Rectangle rectangle = new Rectangle(); //model.get("newrectangle");
     model.put("rectangle", rectangle);
     return "rectangle";
   }
