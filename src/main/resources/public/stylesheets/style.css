@@ -1,11 +1,14 @@
 body {
     padding: 10px;
     align-content: center;
-    color: cyan;
+    background-color: red;
 }
 div {
+    
     align-items: center;
-    color: lightgray;
+    background-color: lightgray;
+    height: 800px;
+    border: 4px;
 }
 table {
     border: 2px;
