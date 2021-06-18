@@ -75,8 +75,8 @@ public class Main {
   @GetMapping("/rectangle")
   public String getRectangleSelected(Map<String, Object> model){
     System.out.println(model.get("newrectangle"));
-    Rectangle rectangle = new Rectangle(); //model.get("newrectangle");
-    model.put("rectangle", rectangle);
+    //Rectangle rectangle = new Rectangle();
+    //model.put("rectangle", rectangle);
     return "rectangle";
   }
   
@@ -87,8 +87,8 @@ public class Main {
   public String handleBrowserRectangleSaving(Map<String, Object> model, Rectangle rectangle) throws Exception {
       try (Connection connection = dataSource.getConnection()) {
         Statement stmt = connection.createStatement();
-        String sql = "UPDATE";
-        stmt.executeUpdate(sql);
+       // String sql = "UPDATE";
+        //stmt.executeUpdate(sql);
         return "redirect:/rectangle";
       } catch (Exception e) {
         model.put("message", e.getMessage());
