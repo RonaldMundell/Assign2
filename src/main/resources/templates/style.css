@@ -1,0 +1,11 @@
+body {
+    align-content: center;
+    background-color: cyan;
+}
+div {
+    align-items: center;
+    background-color: lightgray;
+}
+table {
+    border: 2px;
+}
