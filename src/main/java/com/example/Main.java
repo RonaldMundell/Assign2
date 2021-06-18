@@ -75,8 +75,8 @@ public class Main {
   @GetMapping("/rectangle")
   public String getRectangleSelected(Map<String, Object> model){
     System.out.println(model.get("newrectangle"));
-    //Rectangle rectangle = new Rectangle();
-    //model.put("rectangle", rectangle);
+    Rectangle rectangle = new Rectangle();
+    model.put("rectangle", rectangle);
     return "rectangle";
   }
   
