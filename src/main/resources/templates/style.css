@@ -1,10 +1,11 @@
 body {
+    padding: 10px;
     align-content: center;
-    background-color: cyan;
+    color: cyan;
 }
 div {
     align-items: center;
-    background-color: lightgray;
+    color: lightgray;
 }
 table {
     border: 2px;
