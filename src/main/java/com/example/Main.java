@@ -43,7 +43,6 @@ public class Main {
       Statement stmt = connection.createStatement();
       String sql = "SELECT * FROM rectangles";
       Result rectangles = stmt.executeUpdate(sql);
-      System.out.println(rectangles);
       return "index";
     } catch (Exception e) {
       model.put("message", e.getMessage());
