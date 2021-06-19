@@ -5,4 +5,5 @@ function CreateTable(Table){
        +"</td><td>"+rectangle.getColor()+'</td><td><button value ="Edit Button" href="th:'
        +rectangle.getName()+'"></td></tr>';
     })
+    document.getElementById("TheTable").append(tables)
 }
