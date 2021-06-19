@@ -39,9 +39,16 @@ public class Main {
 
   @RequestMapping("/")
   String index(Map<String, Object> model) {
-    ArrayList rectangles = new ArrayList();
-    model.put("rectangles", rectangles);
-    return "index";
+    try (Connection connection = dataSource.getConnection()) {
+      Statement stmt = connection.createStatement();
+      String sql = "SELECT * FROM rectangles";
+      Result rectangles = stmt.executeUpdate(sql);
+      System.out.println(rectangles);
+      return "index";
+    } catch (Exception e) {
+      model.put("message", e.getMessage());
+      return "error";
+    }
   }
 
   @GetMapping(
