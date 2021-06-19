@@ -44,7 +44,7 @@ public class Main {
       stmt.executeUpdate("CREATE TABLE IF NOT EXISTS rectangles (id serial, name varchar(20), height varchar(20), width varchar(20), color varchar(20))");
       String sql = "SELECT * FROM rectangles";
       ResultSet rectangles = stmt.executeQuery(sql);
-      System.out.print(rectangles);
+      System.out.print(rectangles.getRow());
       return "index";
     } catch (Exception e) {
       model.put("message", e.getMessage());
