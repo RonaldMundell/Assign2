@@ -11,6 +11,8 @@ div {
     border: 20px;
 }
 table {
-    
-    border: 2px;
-}
+    align-self: center;
+    border-collapse: collapse;
+    border: 1px solid black;
+    width: 50%;
+  }
