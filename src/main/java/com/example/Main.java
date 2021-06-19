@@ -42,7 +42,7 @@ public class Main {
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
       String sql = "SELECT * FROM rectangles";
-      Result rectangles = stmt.executeUpdate(sql);
+      ResultSet rectangles = stmt.executeUpdate(sql);
       return "index";
     } catch (Exception e) {
       model.put("message", e.getMessage());
