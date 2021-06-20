@@ -23,19 +23,19 @@ public class Rectangle {
         return this.id;
     }
 
-    public void setName(String n) {
-        this.name = n;
+    public void setName(String name) {
+        this.name = name;
     }
-    public void setBgcolor(String bgc) {
-        this.bgcolor = bgc;
+    public void setBgcolor(String bgcolor) {
+        this.bgcolor = bgcolor;
     }
-    public void setHeight(String h) {
-        this.height = h;
+    public void setHeight(String height) {
+        this.height = height;
     }
-    public void setWidth(String w) {
-        this.width = w;
+    public void setWidth(String width) {
+        this.width = width;
     }
-    public void setId(String i) {
-        this.id = i;
+    public void setId(String id) {
+        this.id = id;
     }
 }
