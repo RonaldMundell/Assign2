@@ -74,14 +74,11 @@ public class Main {
     path = "/newrectangle",
     consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE}
   )
-  public String handleBrowserRectangleSubmit(Map<String, Object> model, Rectangle rectangle) throws Exception {
+  public String handleBrowserRectangleSubmit(Rectangle rectangle) throws Exception {
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
       stmt.execute("DROP TABLE rectangles");
-      stmt.executeUpdate("CREATE TABLE IF NOT EXISTS rectangles (id serial, name varchar(20), height varchar(300), width varchar(20), color varchar(20))");
-      if(model.containsKey("rectangle")){
-        rectangle.setHeight(model.get("rectangle").getName());
-      }
+      stmt.executeUpdate("CREATE TABLE IF NOT EXISTS rectangles (id serial, name varchar(20), height varchar(20), width varchar(20), color varchar(20))");
       String sql = "INSERT INTO rectangles (name, height, width, color) VALUES ('" + rectangle.getName() + "','" 
       + rectangle.getHeight() + "','" + rectangle.getWidth() + "','" + rectangle.getBgcolor() + "');";
       stmt.executeUpdate(sql);
@@ -105,7 +102,7 @@ public class Main {
     path = "rectangle",
     consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE}
   )
-  public String handleBrowserRectangleSaving(Map<String, Object> model, Rectangle rectangle) throws Exception {
+  public String handleBrowserRectangleSaving(Rectangle rectangle) throws Exception {
       try (Connection connection = dataSource.getConnection()) {
         Statement stmt = connection.createStatement();
         String sql = "UPDATE rectangles SET name = " + rectangle.getName() + ", height = " + rectangle.getHeight() 
