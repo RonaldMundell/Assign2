@@ -51,7 +51,6 @@ public class Main {
         rectangle.setId(rs.getString("id"));
         output.add(rs.getString("name")+" | "+rs.getString("color") + " | " + rs.getString("id"));
       }
-      model.put("recid", rs.getString("id"));
       model.put("rectangles", output);
       return "index";
       }catch (Exception e){
