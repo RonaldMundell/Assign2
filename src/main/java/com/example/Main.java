@@ -83,11 +83,15 @@ public class Main {
         rectangle.setHeight(rs.getString("height"));
         rectangle.setBgcolor(rs.getString("color"));
         output.add(rectangle);
-      }
+      } 
       model.put("rectangles", output);
       return "success";
+      }catch (Exception e){
+        model.put("Message", e.getMessage());
+        return "error";
+      }
     }
-  }
+  
 
   @GetMapping("/rectangle")
   public String getRectangleSelected(Map<String, Object> model){
