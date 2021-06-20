@@ -17,7 +17,7 @@
         <input type="submit" value="Save Rectangle">
     </form>
     <br>
-        <div style="border: 1px solid black;">
+        <div th:style="border: 1px solid black; height: ${rectangle.height}px; width: ${rectangle.width}px; background-color: ${rectangle.bgcolor}">
             <p th:text="${rectangle.name}"></p>
         </div>
 </div>
