@@ -1,4 +1,4 @@
-function CreateTable(Table){
+function createTable(Table){
     var tables = "";
     console.log("Hello")
     Table.forEach(rectangle => {
