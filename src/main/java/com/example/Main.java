@@ -109,8 +109,8 @@ public class Main {
   public String handleBrowserRectangleSaving(Map<String, Object> model, Rectangle rectangle) throws Exception {
       try (Connection connection = dataSource.getConnection()) {
         Statement stmt = connection.createStatement();
-        String sql = "UPDATE rectangles SET name = " + rectangle.getName() + ", height = " + rectangle.getHeight() 
-        + ", width = " + rectangle.getWidth() + ", color = " + rectangle.getBgcolor() + "where name =="+rectangle.getName()+";";
+        String sql = "UPDATE rectangles SET name = '" + rectangle.getName() + "', height = '" + rectangle.getHeight() 
+        + "', width = '" + rectangle.getWidth() + "', color = '" + rectangle.getBgcolor() + "' where id =="+rectangle.getId()+";";
         stmt.executeUpdate(sql);
         return "redirect:/";
       } catch (Exception e) {
