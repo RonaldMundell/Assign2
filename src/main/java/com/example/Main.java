@@ -66,7 +66,7 @@ public class Main {
   )
   public String getRectangleForm(Map<String, Object> model){
     Rectangle rectangle = new Rectangle();  
-    model.put("newrectangle", rectangle);
+    model.put("rectangle", rectangle);
     return "newrectangle";
   }
 
