@@ -101,6 +101,7 @@ public class Main {
       rectangle.setBgcolor(rs.getString("color"));
       rectangle.setId(rs.getString("id"));
       model.put("rectangle", rectangle);
+      model.put("recid", "@{/deleterectangle/"+rs.getString("id")+"}");
       return "rectangle";
       }catch (Exception e){
         model.put("Message", e.getMessage());
