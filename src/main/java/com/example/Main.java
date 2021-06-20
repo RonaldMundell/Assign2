@@ -35,7 +35,7 @@ public class Main {
   public static void main(String[] args) throws Exception {
     SpringApplication.run(Main.class, args);
   }
-  @RequestMapping("/index")
+  @RequestMapping("/")
   String index(Map<String, Object> model) {
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
@@ -43,18 +43,13 @@ public class Main {
       ResultSet rs = stmt.executeQuery(sql);
       ArrayList output = new ArrayList();
       while(rs.next()){
-        Rectangle rectangle = new Rectangle();
-        rectangle.setName(rs.getString("name"));
-        rectangle.setWidth(rs.getString("width"));
-        rectangle.setHeight(rs.getString("height"));
-        rectangle.setBgcolor(rs.getString("color"));
-        output.add(rectangle);
+        output.add("ID: "+rs.getString("id")+"Name:"+rs.getString("name")+", Color:"+rs.getString("color"));
       } 
       model.put("rectangles", output);
       return "index";
       }catch (Exception e){
         model.put("Message", e.getMessage());
-        return "error";
+      return "error";
       }
   }
 
