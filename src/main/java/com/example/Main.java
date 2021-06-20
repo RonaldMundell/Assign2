@@ -129,11 +129,11 @@ public class Main {
       }
   }
 
-  @GetMapping("rectangle/deleterectangle/{nid}")
+  @GetMapping("/rectangle/deleterectangle/{nid}")
   public String deleteRectangleSelected(Map<String, Object> model, @PathVariable String nid){
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
-      String sql = "DELETE FROM rectanlges where id = '"+nid+"'";
+      String sql = "DELETE FROM rectanlges WHERE id = '"+nid+"'";
       stmt.executeUpdate(sql);
       return "deleterectangle";
       }catch (Exception e){
