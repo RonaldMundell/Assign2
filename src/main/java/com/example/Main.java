@@ -47,8 +47,11 @@ public class Main {
       rectangle.setName("Bob");
       rectangle.setHeight("30");
       rectangle.setWidth("20");
-      ArrayList rectangles2 = new ArrayList();
       rectangles2.add(rectangle);
+      while(rectangles.next()){
+        Rectangles2.add(rectangles.getRow());
+      }
+      ArrayList rectangles2 = new ArrayList();
       model.put("rectangles", rectangles2);
       return "index";
     } catch (Exception e) {
@@ -73,10 +76,6 @@ public class Main {
   public String handleBrowserRectangleSubmit(Map<String, Object> model, Rectangle newrectangle) throws Exception {
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
-      newrectangle.setBgcolor("red");
-      newrectangle.setName("Bob");
-      newrectangle.setHeight("30");
-      newrectangle.setWidth("20");
       stmt.executeUpdate("CREATE TABLE IF NOT EXISTS rectangles (id serial, name varchar(20), height varchar(20), width varchar(20), color varchar(20))");
       String sql = "INSERT INTO rectangles (name, height, width, color) VALUES ('" + newrectangle.getName() + "','" + newrectangle.getHeight() + "','" + newrectangle.getWidth() + "','" + newrectangle.getBgcolor() + "');";
       stmt.executeUpdate(sql);

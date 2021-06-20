@@ -5,12 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE-edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./stylesheet/style.css"  />
-    <script src="./table.js"> </script>
+    <script src="./table.js"></script>
 </head>
 <body><div>
 <h1>Rectangles</h1>
 <form action="#" method="post" th:action="@{/newrectangle}" th:object="${rectangles}">
-  <table id="TheTable" onload='createTable("${rectangles}")'>
+  <table id="TheTable" onloadstart='createTable("${rectangles}")'>
     <tr><th>ID</th><th>Name</th><th>Color</th><th></th></tr>
     
   </table>
