@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.w3c.dom.css.Rect;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.MediaType;
 
@@ -38,21 +38,7 @@ public class Main {
 
   @RequestMapping("/")
   String index(Map<String, Object> model) {
-    try (Connection connection = dataSource.getConnection()) {
-      Statement stmt = connection.createStatement();
-      stmt.executeUpdate("CREATE TABLE IF NOT EXISTS rectangles (id serial, name varchar(20), height varchar(20), width varchar(20), color varchar(20))");
-      String sql = "SELECT * FROM rectangles";
-      ResultSet rectangles = stmt.executeQuery(sql);
-      ArrayList rectangles2 = new ArrayList();
-      while(rectangles.next()){
-        rectangles2.add(rectangles.getRow());
-      }
-      model.put("rectangles", rectangles2);
       return "index";
-    } catch (Exception e) {
-      model.put("message", e.getMessage());
-      return "error";
-    }
   }
 
   @GetMapping(
@@ -75,12 +61,31 @@ public class Main {
       String sql = "INSERT INTO rectangles (name, height, width, color) VALUES (" + rectangle.getName() + ", " 
       + rectangle.getHeight() + ", " + rectangle.getWidth() + ", " + rectangle.getBgcolor() + ");";
       stmt.executeUpdate(sql);
-      return "redirect:/newrectangle";
+      return "redirect:/newrectangle/success";
     } catch (Exception e) {
       model.put("message", e.getMessage());
       return "error";
     }
 
+  }
+
+  @getMessage("newrectangle/success")
+  public String getsuccess(){
+    try (Connection connection = dataSource.getConnection()) {
+      Statement stmt = connection.createStatement();
+      String sql = "SELECT * FROM rectangles";
+      ResultSet rs = stmt.executeQuery(sql);
+      ArrayList rectangles = new ArrayList();
+      while(rectangles.next()){
+        Rectangle rectangle = new Rectangle();
+        rectangle.setName(rs.getString("name"));
+        rectangle.setWidth(rs.getString("width"));
+        rectangle.setHeight(rs.getString("height"));
+        rectangle.setBgcolor(rs.getString("color"));
+        rectangles.add(rectangle);
+      }
+      model.put("rectangles", rectangles);
+    }
   }
 
   @GetMapping("/rectangle")
