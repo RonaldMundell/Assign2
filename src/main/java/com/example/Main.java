@@ -82,7 +82,7 @@ public class Main {
       String sql = "INSERT INTO rectangles (name, height, width, color) VALUES (" + rectangle.getName() + ", " 
       + rectangle.getHeight() + ", " + rectangle.getWidth() + ", " + rectangle.getBgcolor() + ");";
       stmt.executeUpdate(sql);
-      return "redirect:/";
+      return "redirect:/newrectangle/";
     } catch (Exception e) {
       return "error";
     }
