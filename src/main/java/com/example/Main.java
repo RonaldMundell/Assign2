@@ -42,7 +42,10 @@ public class Main {
       stmt.executeUpdate("CREATE TABLE IF NOT EXISTS rectangles (id serial, name varchar(20), height varchar(20), width varchar(20), color varchar(20))");
       String sql = "SELECT * FROM rectangles";
       ResultSet rectangles = stmt.executeQuery(sql);
-      model.put("rectangles", rectangles);
+      Rectangle rectangle = new Rectangle();
+      ArrayList rectangles2 = new ArrayList();
+      rectangles2.add(rectangle);
+      model.put("rectangles", rectangles2);
       return "index";
     } catch (Exception e) {
       model.put("message", e.getMessage());
