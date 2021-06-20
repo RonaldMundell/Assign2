@@ -24,6 +24,7 @@ import java.util.Map;
 @Controller
 @SpringBootApplication
 public class Main {
+  private int i = 0;
 
   @Value("${spring.datasource.url}")
   private String dbUrl;
@@ -39,6 +40,10 @@ public class Main {
   String index(Map<String, Object> model) {
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
+      if(i == 0){
+        i++;
+        stmt.execute("DROP TABLE rectangles");
+      }
       stmt.executeUpdate("CREATE TABLE IF NOT EXISTS rectangles (id serial, name varchar(20), height varchar(20), width varchar(20), color varchar(20))");
       String sql = "SELECT * FROM rectangles";
       ResultSet rectangles = stmt.executeQuery(sql);
