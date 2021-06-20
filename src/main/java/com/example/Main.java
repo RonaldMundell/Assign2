@@ -43,13 +43,7 @@ public class Main {
       stmt.executeUpdate("CREATE TABLE IF NOT EXISTS rectangles (id serial, name varchar(20), height varchar(20), width varchar(20), color varchar(20))");
       String sql = "SELECT * FROM rectangles";
       ResultSet rectangles = stmt.executeQuery(sql);
-      Rectangle rectangle = new Rectangle();
       ArrayList rectangles2 = new ArrayList();
-      rectangle.setBgcolor("red");
-      rectangle.setName("Bob");
-      rectangle.setHeight("30");
-      rectangle.setWidth("20");
-      rectangles2.add(rectangle);
       while(rectangles.next()){
         rectangles2.add(rectangles.getRow());
       }
@@ -74,7 +68,7 @@ public class Main {
     path = "/newrectangle",
     consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE}
   )
-  public String handleBrowsernewRectangleSubmit(Rectangle rectangle) throws Exception {
+  public String handleBrowsernewRectangleSubmit(Map<String, Object> model, Rectangle rectangle) throws Exception {
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
       stmt.executeUpdate("CREATE TABLE IF NOT EXISTS rectangles (id serial, name varchar(20), height varchar(20), width varchar(20), color varchar(20))");
@@ -83,6 +77,7 @@ public class Main {
       stmt.executeUpdate(sql);
       return "redirect:/newrectangle";
     } catch (Exception e) {
+      model.put("message", e.getMessage());
       return "error";
     }
 
@@ -97,10 +92,10 @@ public class Main {
   }
   
   @PostMapping(
-    path = "rectangle",
+    path = "rectangle/{rid}",
     consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE}
   )
-  public String handleBrowserRectangleSaving(Rectangle rectangle) throws Exception {
+  public String handleBrowserRectangleSaving(Map<String, Object> model, Rectangle rectangle) throws Exception {
       try (Connection connection = dataSource.getConnection()) {
         Statement stmt = connection.createStatement();
         String sql = "UPDATE rectangles SET name = " + rectangle.getName() + ", height = " + rectangle.getHeight() 
@@ -108,7 +103,7 @@ public class Main {
         stmt.executeUpdate(sql);
         return "redirect:/rectangle";
       } catch (Exception e) {
-        
+        model.put("message", e.getMessage());
         return "error";
       }
   }
