@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./stylesheet/style.css" />
 </head>
 <body>
-<div th:object="${rectangle}">
+<div>
     <form action="#" method="post" th:action="@{/rectangle}" th:object="${rectangle}">
         <input type="text" th:field=*{name} placeholder="Name"> <br>
         <input type="text" th:field=*{height} placeholder="height in Pixels"> <br>
@@ -15,11 +15,11 @@
         <input type="text" th:field=*{bgcolor} placeholder="color"> <br>
         <input type="hidden" th:field="*{id}">
         <input type="submit" value="Save Rectangle">
+        <br>
+        <div th:height="*{height}px" th:width="*{width}px" th:background-color="*{bgcolor}">
+            <p th:value="*{name}"></p>
+        </div>
     </form>
-    
-    <div width="*{height}" width="*{width}" color="*{bgcolor}">
-        <p th:field="*{name}"></p>
-    </div>
 </div>
 </body>
 
