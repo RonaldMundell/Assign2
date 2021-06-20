@@ -82,10 +82,11 @@ public class Main {
   
 
   @GetMapping("/rectangle")
-  public String getRectangleSelected(Map<String, Object> model, Rectangle rectangle){
+  public String getRectangleSelected(Map<String, Object> model){
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
-      String sql = "SELECT * FROM rectangles where id = "+1;
+      String sql = "SELECT * FROM rectangles where id == 1";
+      Rectangle rectangle = new Rectangle();
       ResultSet rs = stmt.executeQuery(sql);
       rectangle.setName(rs.getString("name"));
       rectangle.setHeight(rs.getString("height"));
@@ -110,7 +111,7 @@ public class Main {
         String sql = "UPDATE rectangles SET name = " + rectangle.getName() + ", height = " + rectangle.getHeight() 
         + ", width = " + rectangle.getWidth() + ", color = " + rectangle.getBgcolor() + "where name =="+rectangle.getName()+";";
         stmt.executeUpdate(sql);
-        return "redirect:/rectangle";
+        return "redirect:/";
       } catch (Exception e) {
         model.put("message", e.getMessage());
         return "error";
