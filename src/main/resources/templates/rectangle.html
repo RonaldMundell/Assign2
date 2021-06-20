@@ -16,7 +16,9 @@
         <input type="hidden" th:field="*{id}">
         <input type="submit" value="Save Rectangle">
         <br>
-        <div style="border: 1px solid black; height: *{height}px; width: *{width}px;" ></div>
+        <div style="border: 1px solid black;">
+        <p th:field="*{name}"></p>
+        </div>
     </form>
 </div>
 </body>
