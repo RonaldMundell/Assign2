@@ -70,12 +70,12 @@ public class Main {
   }
 
   @GetMapping("newrectangle/success")
-  public String getsuccess(){
+  public String getsuccess(Map<String, Object> model){
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
       String sql = "SELECT * FROM rectangles";
       ResultSet rs = stmt.executeQuery(sql);
-      ArrayList rectangles = new ArrayList();
+      ArrayList output = new ArrayList();
       while(rs.next()){
         Rectangle rectangle = new Rectangle();
         rectangle.setName(rs.getString("name"));
@@ -84,7 +84,7 @@ public class Main {
         rectangle.setBgcolor(rs.getString("color"));
         rectangles.add(rectangle);
       }
-      model.put("rectangles", rectangles);
+      model.put("rectangles", output);
       return "success";
     }
   }
