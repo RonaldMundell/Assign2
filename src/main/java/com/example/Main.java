@@ -50,7 +50,7 @@ public class Main {
       rectangle.setWidth("20");
       rectangles2.add(rectangle);
       while(rectangles.next()){
-        Rectangles2.add(rectangles.getRow());
+        rectangles2.add(rectangles.getRow());
       }
       model.put("rectangles", rectangles2);
       return "index";
