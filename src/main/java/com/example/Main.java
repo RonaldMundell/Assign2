@@ -50,7 +50,7 @@ public class Main {
         rectangle.setBgcolor(rs.getString("color"));
         rectangle.setId(rs.getString("id"));
 
-        output.add(Rectangle, "rectagle/"+rs.getString("id"));
+        output.add(Object(rectangle, "rectagle/"+rs.getString("id")));
       }
       model.put("rectangles", output);
       return "index";
