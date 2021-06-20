@@ -10,8 +10,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import static jdk.internal.org.objectweb.*;
-
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.MediaType;
 
@@ -68,6 +66,7 @@ public class Main {
   public String handleBrowserRectangleSubmit(Map<String, Object> model, Rectangle rectangle) throws Exception {
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
+      System.out.print(rectangle.getName());
       stmt.executeUpdate("CREATE TABLE IF NOT EXISTS rectangles (id serial, name varchar(20), height varchar(20), width varchar(20), color varchar(20))");
       String sql = "INSERT INTO rectangles (name, height, width, color) VALUES ('" + rectangle.getName() + "','" + rectangle.getHeight() + "','" + rectangle.getWidth() + "','" + rectangle.getBgcolor() + "')";
       stmt.executeUpdate(sql);
