@@ -43,6 +43,10 @@ public class Main {
       String sql = "SELECT * FROM rectangles";
       ResultSet rectangles = stmt.executeQuery(sql);
       Rectangle rectangle = new Rectangle();
+      rectangle.setBgcolor("red");
+      rectangle.setName("Bob");
+      rectangle.setHeight("30");
+      rectangle.setWidth("20");
       ArrayList rectangles2 = new ArrayList();
       rectangles2.add(rectangle);
       model.put("rectangles", rectangles2);
