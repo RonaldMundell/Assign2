@@ -84,7 +84,6 @@ public class Main {
       stmt.executeUpdate(sql);
       return "redirect:/newrectangle";
     } catch (Exception e) {
-      model.put("message", e.getMessage());
       return "error";
     }
 
@@ -110,7 +109,7 @@ public class Main {
         stmt.executeUpdate(sql);
         return "redirect:/rectangle";
       } catch (Exception e) {
-        model.put("message", e.getMessage());
+        
         return "error";
       }
   }
