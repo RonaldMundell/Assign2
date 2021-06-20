@@ -10,10 +10,10 @@
 <h1>Rectangles</h1>
   <div id="TheTable">
    <ul th:each="rectangle: ${rectangles}">
-     <li th:text="${rectangle}"><a th:href ="/rectangle/1"></a></li>
+     <li th:text="${rectangle}"><a th:href ="@{/rectangle/1}"></a></li>
    </ul>
   <br>
-<a th:href="@{/newrectangle">New Rectangle</a>
+<a th:href="@{/newrectangle}">New Rectangle</a>
 </div>
 </body>
 </html>
