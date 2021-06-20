@@ -49,7 +49,7 @@ public class Main {
         rectangle.setWidth(rs.getString("width"));
         rectangle.setBgcolor(rs.getString("color"));
         rectangle.setId(rs.getString("id"));
-        output.add("<a th:href=rectangle/'"+rs.getString("id")+"'>"+ rs.getString("name")+"</a> | "+rs.getString("color") + " | " + rs.getString("id"));
+        output.add(rs.getString("name")+"</a> | "+rs.getString("color") + " | " + rs.getString("id"));
       } 
       model.put("rectangles", output);
       return "index";
