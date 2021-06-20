@@ -49,8 +49,10 @@ public class Main {
         rectangle.setWidth(rs.getString("width"));
         rectangle.setBgcolor(rs.getString("color"));
         rectangle.setId(rs.getString("id"));
-
-        output.add(Object(rectangle, "rectagle/"+rs.getString("id")));
+        ArrayList rect = new ArrayList();
+        rect.add(rectangle);
+        rect.add("rectagle/"+rs.getString("id"));
+        output.add(rect);
       }
       model.put("rectangles", output);
       return "index";
