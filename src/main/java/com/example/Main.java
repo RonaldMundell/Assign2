@@ -75,14 +75,13 @@ public class Main {
     path = "/newrectangle",
     consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE}
   )
-  public String handleBrowserRectangleSubmit(Map<String, Object> model, Rectangle newrectangle) throws Exception {
+  public String handleBrowserRectangleSubmit(Map<String, Object> model, Rectangle rectangle) throws Exception {
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
       stmt.executeUpdate("CREATE TABLE IF NOT EXISTS rectangles (id serial, name varchar(20), height varchar(20), width varchar(20), color varchar(20))");
-      Object rectangle = model.values();
-      newrectangle.setName(rectangle.getClass().getName());
-      
-      String sql = "INSERT INTO rectangles (name, height, width, color) VALUES ('" + newrectangle.getName() + "','" + newrectangle.getHeight() + "','" + newrectangle.getWidth() + "','" + newrectangle.getBgcolor() + "');";
+ 
+      String sql = "INSERT INTO rectangles (name, height, width, color) VALUES ('" + rectangle.getName() + "','" 
+      + rectangle.getHeight() + "','" + rectangle.getWidth() + "','" + rectangle.getBgcolor() + "');";
       stmt.executeUpdate(sql);
       return "redirect:/newrectangle";
     } catch (Exception e) {
