@@ -69,6 +69,7 @@ public class Main {
   public String handleBrowsernewRectangleSubmit(Map<String, Object> model, Rectangle rectangle) throws Exception {
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
+      stmt.executeUpdate("DROP table rectangles");
       stmt.executeUpdate("CREATE TABLE IF NOT EXISTS rectangles (id serial, name varchar(20), height varchar(20), width varchar(20), color varchar(20))");
       String sql = "INSERT INTO rectangles (name, height, width, color) VALUES ('" + rectangle.getName() + "', '" 
       + rectangle.getHeight() + "', '" + rectangle.getWidth() + "', '" + rectangle.getBgcolor() + "');";
@@ -83,8 +84,17 @@ public class Main {
 
   @GetMapping("/rectangle")
   public String getRectangleSelected(Map<String, Object> model){
-    System.out.println(model.get("newrectangle"));
-    Rectangle rectangle = new Rectangle();
+    try (Connection connection = dataSource.getConnection()) {
+      Statement stmt = connection.createStatement();
+      String sql = "SELECT * FROM rectangles where id = "+1;
+      ResultSet rs = stmt.executeQuery(sql);
+      Rectangle rectangle = new Rectangle();
+      model.put("rectangle", rectangle);
+      return "rectangle";
+      }catch (Exception e){
+        model.put("Message", e.getMessage());
+      return "error";
+      }
     model.put("rectangle", rectangle);
     return "rectangle";
   }
