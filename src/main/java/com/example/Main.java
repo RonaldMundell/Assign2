@@ -43,6 +43,7 @@ public class Main {
       String sql = "SELECT * FROM rectangles";
       ResultSet rectangles = stmt.executeQuery(sql);
       Rectangle rectangle = new Rectangle();
+      ArrayList rectangles2 = new ArrayList();
       rectangle.setBgcolor("red");
       rectangle.setName("Bob");
       rectangle.setHeight("30");
@@ -51,7 +52,6 @@ public class Main {
       while(rectangles.next()){
         Rectangles2.add(rectangles.getRow());
       }
-      ArrayList rectangles2 = new ArrayList();
       model.put("rectangles", rectangles2);
       return "index";
     } catch (Exception e) {
