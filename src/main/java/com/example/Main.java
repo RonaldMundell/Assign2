@@ -50,7 +50,7 @@ public class Main {
         rectangle.setBgcolor(rs.getString("color"));
         rectangle.setId(rs.getString("id"));
         ArrayList rect = new ArrayList();
-        rect.add(rectangle);
+        rect.add("Name: "+rectangle.getName()+"| Color: "+rectangle.getBgcolor());
         rect.add("rectangle/"+rs.getString("id"));
         output.add(rect);
       }
