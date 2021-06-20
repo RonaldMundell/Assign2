@@ -40,10 +40,7 @@ public class Main {
   String index(Map<String, Object> model) {
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
-      if(i == 0){
-        i++;
-        stmt.execute("DROP TABLE rectangles");
-      }
+      //stmt.execute("DROP TABLE rectangles");
       stmt.executeUpdate("CREATE TABLE IF NOT EXISTS rectangles (id serial, name varchar(20), height varchar(20), width varchar(20), color varchar(20))");
       String sql = "SELECT * FROM rectangles";
       ResultSet rectangles = stmt.executeQuery(sql);
@@ -82,12 +79,13 @@ public class Main {
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
       stmt.executeUpdate("CREATE TABLE IF NOT EXISTS rectangles (id serial, name varchar(20), height varchar(20), width varchar(20), color varchar(20))");
-      if(model.isEmpty()){
-      }else{
-      System.out.print(model.get("newrectangle"));
-      }
+      if(model.containsKey("newrectangle")){
+      Object rectangle = model.get("newrectangle");
+      newrectangle.setName(rectangle.toString());
+      
       String sql = "INSERT INTO rectangles (name, height, width, color) VALUES ('" + newrectangle.getName() + "','" + newrectangle.getHeight() + "','" + newrectangle.getWidth() + "','" + newrectangle.getBgcolor() + "');";
       stmt.executeUpdate(sql);
+      }
       return "redirect:/newrectangle";
     } catch (Exception e) {
       model.put("message", e.getMessage());
