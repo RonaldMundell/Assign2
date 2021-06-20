@@ -82,12 +82,16 @@ public class Main {
   
 
   @GetMapping("/rectangle")
-  public String getRectangleSelected(Map<String, Object> model){
+  public String getRectangleSelected(Map<String, Object> model, Rectangle rectangle){
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
       String sql = "SELECT * FROM rectangles where id = "+1;
       ResultSet rs = stmt.executeQuery(sql);
-      Rectangle rectangle = new Rectangle();
+      rectangle.setName(rs.getString("name"));
+      rectangle.setHeight(rs.getString("height"));
+      rectangle.setWidth(rs.getString("width"));
+      rectangle.setBgcolor(rs.getString("color"));
+      rectangle.setId(rs.getString("id"));
       model.put("rectangle", rectangle);
       return "rectangle";
       }catch (Exception e){
