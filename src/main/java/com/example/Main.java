@@ -129,13 +129,13 @@ public class Main {
       }
   }
 
-  @GetMapping("/deleterectangle/{nid}")
+  @GetMapping("rectangle/deleterectangle/{nid}")
   public String deleteRectangleSelected(Map<String, Object> model, @PathVariable String nid){
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
       String sql = "DELETE FROM rectanlges WHERE id = '"+nid+"'";
       stmt.executeUpdate(sql);
-      return "deleterectangle";
+      return "rectangle/deleterectangle";
       }catch (Exception e){
         model.put("Message", e.getMessage());
       return "error";
@@ -143,7 +143,8 @@ public class Main {
   }
 
   @PostMapping(
-    path = "rectangle/deleterectangle"
+    path = "rectangle/deleterectangle",
+    consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE}
   )
   public String pageresult(Map<String, Object> model){
         return "redirect:/";
