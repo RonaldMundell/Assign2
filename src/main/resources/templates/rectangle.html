@@ -15,11 +15,11 @@
         <input type="text" th:field=*{bgcolor} placeholder="color"> <br>
         <input type="hidden" th:field="*{id}">
         <input type="submit" value="Save Rectangle">
-        <br>
-        <div style="border: 1px solid black;">
-        <p th:field="*{name}"></p>
-        </div>
     </form>
+    <br>
+        <div style="border: 1px solid black;">
+            <p th:text="${rectangle.name}"></p>
+        </div>
 </div>
 </body>
 
