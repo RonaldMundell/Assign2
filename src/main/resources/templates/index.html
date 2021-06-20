@@ -9,14 +9,13 @@
 </head>
 <body><div>
 <h1>Rectangles</h1>
-<form action="#" method="post" th:action="@{/newrectangle}" th:object="${rectangles}">
-  <table id="TheTable" onloadstart='createTable("${rectangles}")'>
-    <tr><th>ID</th><th>Name</th><th>Color</th><th></th></tr>
-    
-  </table>
+  <div id="TheTable">
+    <h1>ID Name Color</h1>
+    <ul th:each="rectangle : $rectangles">
+      <li th:text="${rectangle}"></li>
+    </ul>
   <br>
-<input type="submit" value="New Rectangle"/>
-</form>
+<a th:href="@{/newrectangle">New Rectangle</a>
 </div>
 </body>
 </html>
