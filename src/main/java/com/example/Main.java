@@ -43,7 +43,13 @@ public class Main {
       ResultSet rs = stmt.executeQuery(sql);
       ArrayList output = new ArrayList();
       while(rs.next()){
-        output.add("ID: "+rs.getString("id")+"Name:"+rs.getString("name")+", Color:"+rs.getString("color"));
+        Rectangle rectangle = new Rectangle();
+        rectangle.setName(rs.getString("name"));
+        rectangle.setHeight(rs.getString("height"));
+        rectangle.setWidth(rs.getString("width"));
+        rectangle.setBgcolor(rs.getString("color"));
+        rectangle.setId(rs.getString("id"));
+        output.add(rectangle);
       } 
       model.put("rectangles", output);
       return "index";
@@ -81,11 +87,11 @@ public class Main {
   }
   
 
-  @GetMapping("/rectangle")
-  public String getRectangleSelected(Map<String, Object> model){
+  @GetMapping("/rectangle/{nid}")
+  public String getRectangleSelected(Map<String, Object> model, @PathVariable String nid){
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
-      String sql = "SELECT * FROM rectangles WHERE Id = 1";
+      String sql = "SELECT * FROM rectangles WHERE Id = '"+nid+"'";
       Rectangle rectangle = new Rectangle();
       ResultSet rs = stmt.executeQuery(sql);
       rs.next();
