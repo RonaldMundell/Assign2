@@ -15,7 +15,7 @@
         <input type="text" th:field=*{bgcolor} placeholder="color"> <br>
         <input type="hidden" th:field="*{id}">
         <input type="submit" value="Save Rectangle">
-        <a th:href="@{/deleterectangle/*{id}}">Delete</a>
+        <a th:href="@{/deleterectangle/${rectangle.id}}">Delete</a>
     </form>
     <br>
         <div style="border: 1px solid black;">

@@ -49,8 +49,9 @@ public class Main {
         rectangle.setWidth(rs.getString("width"));
         rectangle.setBgcolor(rs.getString("color"));
         rectangle.setId(rs.getString("id"));
-        output.add(rs.getString("name")+"</a> | "+rs.getString("color") + " | " + rs.getString("id"));
-      } 
+        output.add(rs.getString("name")+" | "+rs.getString("color") + " | " + rs.getString("id"));
+      }
+      model.put("recid", rs.getString("id"));
       model.put("rectangles", output);
       return "index";
       }catch (Exception e){
