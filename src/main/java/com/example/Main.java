@@ -82,7 +82,7 @@ public class Main {
         rectangle.setWidth(rs.getString("width"));
         rectangle.setHeight(rs.getString("height"));
         rectangle.setBgcolor(rs.getString("color"));
-        rectangles.add(rectangle);
+        output.add(rectangle);
       }
       model.put("rectangles", output);
       return "success";
