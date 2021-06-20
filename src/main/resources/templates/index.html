@@ -5,14 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE-edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./stylesheet/style.css"  />
+    <script>
+      function creatTable(rectangles){
+        var Table = document.getElementById("table")
+        rectangles.forEach(rec => {
+          Table.append("<tr><td>"+rec.name
+          +"</td><tr>")
+        });
+      }
+    </script>
 </head>
 <body><div>
 <h1>Rectangles</h1>
-  <div id="TheTable">
-    <h1>ID Name Color</h1>
-    <ul th:each="rectangle : $rectangles">
-      <li th:text="${rectangle}"></li>
-    </ul>
+  <div id="TheTable" th:object="${rectangles}">
+    <table id="table" onload='creatTable("*{rectangles}")'>
+      <tr><th>ID</th><th>Name</th><th>Color</th></tr>
+    </table> 
   <br>
 <a th:href="@{/newrectangle">New Rectangle</a>
 </div>
