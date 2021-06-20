@@ -131,7 +131,7 @@ public class Main {
       Statement stmt = connection.createStatement();
       String sql = "DELETE FROM rectanlges where id = '"+nid+"'";
       stmt.executeUpdate(sql);
-      return "redirect:/";
+      return "deleterectangle";
       }catch (Exception e){
         model.put("Message", e.getMessage());
       return "error";
