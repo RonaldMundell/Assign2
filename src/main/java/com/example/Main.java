@@ -35,8 +35,7 @@ public class Main {
   public static void main(String[] args) throws Exception {
     SpringApplication.run(Main.class, args);
   }
-
-  @RequestMapping("/")
+  @RequestMapping("/index")
   String index(Map<String, Object> model) {
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
@@ -96,7 +95,7 @@ public class Main {
   }
   
   @PostMapping(
-    path = "rectangle/{rid}",
+    path = "rectangle",
     consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE}
   )
   public String handleBrowserRectangleSaving(Map<String, Object> model, Rectangle rectangle) throws Exception {
