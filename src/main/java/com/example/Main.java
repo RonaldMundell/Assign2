@@ -49,7 +49,7 @@ public class Main {
         rectangle.setWidth(rs.getString("width"));
         rectangle.setBgcolor(rs.getString("color"));
         rectangle.setId(rs.getString("id"));
-        output.add(rectangle);
+        output.add(rs.getString("name")+" | "+rs.getString("color") + " | " + rs.getString("id"));
       } 
       model.put("rectangles", output);
       return "index";
