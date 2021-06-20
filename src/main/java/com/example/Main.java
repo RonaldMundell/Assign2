@@ -38,7 +38,25 @@ public class Main {
 
   @RequestMapping("/")
   String index(Map<String, Object> model) {
+    try (Connection connection = dataSource.getConnection()) {
+      Statement stmt = connection.createStatement();
+      String sql = "SELECT * FROM rectangles";
+      ResultSet rs = stmt.executeQuery(sql);
+      ArrayList output = new ArrayList();
+      while(rs.next()){
+        Rectangle rectangle = new Rectangle();
+        rectangle.setName(rs.getString("name"));
+        rectangle.setWidth(rs.getString("width"));
+        rectangle.setHeight(rs.getString("height"));
+        rectangle.setBgcolor(rs.getString("color"));
+        output.add(rectangle);
+      } 
+      model.put("rectangles", output);
       return "index";
+      }catch (Exception e){
+        model.put("Message", e.getMessage());
+        return "error";
+      }
   }
 
   @GetMapping(
@@ -61,36 +79,13 @@ public class Main {
       String sql = "INSERT INTO rectangles (name, height, width, color) VALUES (" + rectangle.getName() + ", " 
       + rectangle.getHeight() + ", " + rectangle.getWidth() + ", " + rectangle.getBgcolor() + ");";
       stmt.executeUpdate(sql);
-      return "redirect:/newrectangle/success";
+      return "redirect:/newrectangle";
     } catch (Exception e) {
       model.put("message", e.getMessage());
       return "error";
     }
 
   }
-
-  @GetMapping("newrectangle/success")
-  public String getsuccess(Map<String, Object> model){
-    try (Connection connection = dataSource.getConnection()) {
-      Statement stmt = connection.createStatement();
-      String sql = "SELECT * FROM rectangles";
-      ResultSet rs = stmt.executeQuery(sql);
-      ArrayList output = new ArrayList();
-      while(rs.next()){
-        Rectangle rectangle = new Rectangle();
-        rectangle.setName(rs.getString("name"));
-        rectangle.setWidth(rs.getString("width"));
-        rectangle.setHeight(rs.getString("height"));
-        rectangle.setBgcolor(rs.getString("color"));
-        output.add(rectangle);
-      } 
-      model.put("rectangles", output);
-      return "success";
-      }catch (Exception e){
-        model.put("Message", e.getMessage());
-        return "error";
-      }
-    }
   
 
   @GetMapping("/rectangle")
