@@ -51,7 +51,7 @@ public class Main {
         rectangle.setId(rs.getString("id"));
         ArrayList rect = new ArrayList();
         rect.add(rectangle);
-        rect.add("rectagle/"+rs.getString("id"));
+        rect.add("rectangle/"+rs.getString("id"));
         output.add(rect);
       }
       model.put("rectangles", output);
