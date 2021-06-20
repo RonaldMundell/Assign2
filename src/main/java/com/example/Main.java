@@ -95,8 +95,6 @@ public class Main {
         model.put("Message", e.getMessage());
       return "error";
       }
-    model.put("rectangle", rectangle);
-    return "rectangle";
   }
   
   @PostMapping(
