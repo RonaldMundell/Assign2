@@ -69,14 +69,14 @@ public class Main {
 
   }
 
-  @getMessage("newrectangle/success")
+  @GetMapping("newrectangle/success")
   public String getsuccess(){
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
       String sql = "SELECT * FROM rectangles";
       ResultSet rs = stmt.executeQuery(sql);
       ArrayList rectangles = new ArrayList();
-      while(rectangles.next()){
+      while(rs.next()){
         Rectangle rectangle = new Rectangle();
         rectangle.setName(rs.getString("name"));
         rectangle.setWidth(rs.getString("width"));
@@ -85,6 +85,7 @@ public class Main {
         rectangles.add(rectangle);
       }
       model.put("rectangles", rectangles);
+      return "success";
     }
   }
 
