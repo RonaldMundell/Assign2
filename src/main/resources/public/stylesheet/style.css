@@ -14,7 +14,7 @@ table {
     align-self: center;
     border-collapse: collapse;
     border: 1px solid black;
-    width: 50%;
+    width: 300px;
   }
 tr, td {
     border: 1px solid black;
