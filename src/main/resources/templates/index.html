@@ -10,7 +10,7 @@
 <h1>Rectangles</h1>
   <div id="TheTable">
    <table th:each="rectangle: ${rectangles}">
-     <tr><td th:text="${rectangle}"><td><a th:href ="@{/rectangle/1}">Edit</a></td><td><a th:href ="@{/deleterectangle/1}">Delete</a></td></tr>
+     <tr><td th:text="${rectangle}"><td><a th:href ="@{/rectangle/}">Edit</a></td></tr>
   </table>
   <br>
 <a th:href="@{/newrectangle}">New Rectangle</a>
