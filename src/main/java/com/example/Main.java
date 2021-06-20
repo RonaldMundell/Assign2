@@ -85,9 +85,10 @@ public class Main {
   public String getRectangleSelected(Map<String, Object> model){
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
-      String sql = "SELECT * FROM rectangles where id == 1";
+      String sql = "SELECT * FROM rectangles WHERE Id = 1";
       Rectangle rectangle = new Rectangle();
       ResultSet rs = stmt.executeQuery(sql);
+      rs.next();
       rectangle.setName(rs.getString("name"));
       rectangle.setHeight(rs.getString("height"));
       rectangle.setWidth(rs.getString("width"));
