@@ -80,7 +80,7 @@ public class Main {
       stmt.execute("DROP TABLE rectangles");
       stmt.executeUpdate("CREATE TABLE IF NOT EXISTS rectangles (id serial, name varchar(20), height varchar(300), width varchar(20), color varchar(20))");
       if(model.containsKey("rectangle")){
-        rectangle.setHeight(model.get("rectangle").getClass().getName());
+        rectangle.setHeight(model.get("rectangle").getName());
       }
       String sql = "INSERT INTO rectangles (name, height, width, color) VALUES ('" + rectangle.getName() + "','" 
       + rectangle.getHeight() + "','" + rectangle.getWidth() + "','" + rectangle.getBgcolor() + "');";
