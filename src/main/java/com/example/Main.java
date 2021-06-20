@@ -70,8 +70,8 @@ public class Main {
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
       stmt.executeUpdate("CREATE TABLE IF NOT EXISTS rectangles (id serial, name varchar(20), height varchar(20), width varchar(20), color varchar(20))");
-      String sql = "INSERT INTO rectangles (name, height, width, color) VALUES (" + rectangle.getName() + ", " 
-      + rectangle.getHeight() + ", " + rectangle.getWidth() + ", " + rectangle.getBgcolor() + ");";
+      String sql = "INSERT INTO rectangles (name, height, width, color) VALUES ('" + rectangle.getName() + "', '" 
+      + rectangle.getHeight() + "', '" + rectangle.getWidth() + "', '" + rectangle.getBgcolor() + "');";
       stmt.executeUpdate(sql);
       return "redirect:/newrectangle";
     } catch (Exception e) {
