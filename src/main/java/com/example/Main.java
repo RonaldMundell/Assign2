@@ -81,6 +81,9 @@ public class Main {
   public String handleBrowserRectangleSubmit(Map<String, Object> model, Rectangle newrectangle) throws Exception {
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
+      if(model.isEmpty() == false){
+          newrectangle = model.get("newrectangle");
+      }
       stmt.executeUpdate("CREATE TABLE IF NOT EXISTS rectangles (id serial, name varchar(20), height varchar(20), width varchar(20), color varchar(20))");
       String sql = "INSERT INTO rectangles (name, height, width, color) VALUES ('" + newrectangle.getName() + "','" + newrectangle.getHeight() + "','" + newrectangle.getWidth() + "','" + newrectangle.getBgcolor() + "');";
       stmt.executeUpdate(sql);
