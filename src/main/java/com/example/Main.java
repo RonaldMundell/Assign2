@@ -129,7 +129,7 @@ public class Main {
       }
   }
 
-  @GetMapping("/deleterectangle/{did}")
+  @GetMapping("rectangle/deleterectangle/{did}")
   public String deleteRectangleSelected(Map<String, Object> model, @PathVariable String did){
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
@@ -142,7 +142,7 @@ public class Main {
       }
   }
 
-  @PostMapping( "deleterectangle")
+  @PostMapping( "rectangle/deleterectangle")
   public String deletepage(Map<String, Object> model){   
         return "redirect:/";
   }
