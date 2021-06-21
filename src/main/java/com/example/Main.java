@@ -104,7 +104,7 @@ public class Main {
       rectangle.setBgcolor(rs.getString("color"));
       rectangle.setId(rs.getString("id"));
       model.put("rectangle", rectangle);
-      model.put("recid", "deleterectangle/"+rs.getString("id"));
+      model.put("recid", "delete/"+rs.getString("id"));
       return "rectangle";
       }catch (Exception e){
         model.put("Message", e.getMessage());
@@ -129,20 +129,20 @@ public class Main {
       }
   }
 
-  @GetMapping("rectangle/deleterectangle/{did}")
+  @GetMapping("rectangle/delete/{did}")
   public String deleteRectangleSelected(Map<String, Object> model, @PathVariable String did){
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
       String sql = "DELETE FROM rectanlges WHERE id = '"+did+"'";
       stmt.executeUpdate(sql);
-      return "deleterectangle";
+      return "delete";
       }catch (Exception e){
         model.put("Message", e.getMessage());
       return "error";
       }
   }
 
-  @PostMapping( "rectangle/deleterectangle")
+  @PostMapping( "rectangle/delete")
   public String deletepage(Map<String, Object> model){   
         return "redirect:/";
   }
