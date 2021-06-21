@@ -125,7 +125,9 @@ public class Main {
         + "', width = '" + rectangle.getWidth() + "', color = '" + rectangle.getBgcolor() + "' where Id = '"+rectangle.getId()+"'";
         String deletesql = "DELETE FROM rectanlges WHERE id = '"+rectangle.getId()+"'";
         if(true){
+        if(model.get("delete").toString() == "checked"){
         stmt.executeUpdate(sql);
+        }
         }else{
         stmt.executeUpdate(deletesql);
         }
