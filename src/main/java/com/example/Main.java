@@ -106,6 +106,7 @@ public class Main {
       rectangle.setBgcolor(rs.getString("color"));
       rectangle.setId(rs.getString("id"));
       model.put("rectangle", rectangle);
+      model.put("boxstyle", "border: 1px solid black; width: "+rectangle.getWidth()+"px; height: "+rectangle.getHeight()+"px; background-color: "+rectangle.getBgcolor()+";");
       return "rectangle";
       }catch (Exception e){
         model.put("Message", e.getMessage());

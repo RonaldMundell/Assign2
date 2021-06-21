@@ -20,7 +20,7 @@
     <br>
     <a style="border: 1px solid black; background-color: white;" th:href="@{/}">Go back</a>
     <br>
-        <div style="border: 1px solid black; width: '${rectangle.width}'px; height: '${rectanlge.height}'x; background-color: '${rectangle.color}';">
+        <div th:style="${boxstyle}">
             <p th:text="${rectangle.name}"></p>
         </div>
 </div>
