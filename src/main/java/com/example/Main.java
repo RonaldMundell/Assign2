@@ -21,6 +21,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.CheckedEntry;
 import java.util.Map;
 
 @Controller
@@ -124,10 +125,8 @@ public class Main {
         String sql = "UPDATE rectangles SET name = '" + rectangle.getName() + "', height = '" + rectangle.getHeight() 
         + "', width = '" + rectangle.getWidth() + "', color = '" + rectangle.getBgcolor() + "' where Id = '"+rectangle.getId()+"'";
         String deletesql = "DELETE FROM rectanlges WHERE id = '"+rectangle.getId()+"'";
-        if(true){
-        if(model.get("delete").toString() == "checked"){
+        if(model.get("delete") == "Checked"){
         stmt.executeUpdate(sql);
-        }
         }else{
         stmt.executeUpdate(deletesql);
         }
