@@ -9,15 +9,15 @@
 <body>
 <div>
     <form action="#" method="post" th:action="@{/rectangle}" th:object="${rectangle}">
-        <input type="text" editable=false th:field=*{name} placeholder="Name"> <br>
-        <input type="text" th:field=*{height} placeholder="height in Pixels"> <br>
-        <input type="text" th:field=*{width} placeholder="width in Pixels"> <br>
-        <input type="text" th:field=*{bgcolor} placeholder="color"> <br>
+        <input type="text" disabled="disabled" th:field=*{name} placeholder="Name"> <br>
+        <input type="text" disabled="disabled" th:field=*{height} placeholder="height in Pixels"> <br>
+        <input type="text" disabled="disabled" th:field=*{width} placeholder="width in Pixels"> <br>
+        <input type="text" disabled="disabled" th:field=*{bgcolor} placeholder="color"> <br>
         <input type="hidden" th:field="*{id}">
         <input type="submit" value="Delete Rectangle">
     </form>
     <br>
-        <div style="border: 1px solid black;">
+        <div style="border: 1px solid black; background-color: '${rectangle.color}';">
             <p th:text="${rectangle.name}"></p>
         </div>
 </div>
