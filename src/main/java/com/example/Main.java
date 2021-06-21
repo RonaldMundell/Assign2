@@ -143,7 +143,7 @@ public class Main {
   }
 
   @PostMapping(
-    path = "rectangle/deleterectangle",
+    path = "deleterectangle",
     consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE}
   )
   public String pageresult(Map<String, Object> model){
