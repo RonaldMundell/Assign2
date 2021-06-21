@@ -15,6 +15,7 @@
         <input type="hidden" th:field="*{id}">
         <input type="submit" value="Delete Rectangle">
     </form>
+    <a th:href="@{/}">Go back</a>
     <br>
         <div style="border: 1px solid black;">
             <p th:text="${rectangle.name}"></p>
