@@ -6,16 +6,16 @@ body {
     background-color: red;
 }
 div {
-    margin: center;
+    text-align: center;
     background-color: lightgray;
     height: 800px;
     border: 20px;
 }
 table {
-    align-self: center;
+    text-align: center;
     border-collapse: collapse;
     border: 1px solid black;
-    width: 300px;
+    width: 500px;
   }
 tr, td {
     border: 1px solid black;
