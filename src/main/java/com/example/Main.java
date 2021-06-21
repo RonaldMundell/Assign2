@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.http.MediaType;
 
 import javax.sql.DataSource;
+
+import java.security.spec.ECPublicKeySpec;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -121,30 +123,17 @@ public class Main {
         Statement stmt = connection.createStatement();
         String sql = "UPDATE rectangles SET name = '" + rectangle.getName() + "', height = '" + rectangle.getHeight() 
         + "', width = '" + rectangle.getWidth() + "', color = '" + rectangle.getBgcolor() + "' where Id = '"+rectangle.getId()+"'";
+        String deletesql = "DELETE FROM rectanlges WHERE id = '"+rectangle.getId()+"'";
+        if(true){
         stmt.executeUpdate(sql);
+        }else{
+        stmt.executeUpdate(deletesql);
+        }
         return "redirect:/";
       } catch (Exception e) {
         model.put("message", e.getMessage());
         return "error";
       }
-  }
-
-  @GetMapping("rectangle/delete/{did}")
-  public String deleteRectangleSelected(Map<String, Object> model, @PathVariable String did){
-    try (Connection connection = dataSource.getConnection()) {
-      Statement stmt = connection.createStatement();
-      String sql = "DELETE FROM rectanlges WHERE id = '"+did+"'";
-      stmt.executeUpdate(sql);
-      return "delete";
-      }catch (Exception e){
-        model.put("Message", e.getMessage());
-      return "error";
-      }
-  }
-
-  @PostMapping( "rectangle/delete")
-  public String deletepage(Map<String, Object> model){   
-        return "redirect:/";
   }
 
   @Bean
