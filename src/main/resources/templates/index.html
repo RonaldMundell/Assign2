@@ -8,10 +8,10 @@
 </head>
 <body><div>
   <h1>Rectangles</h1>
-  <div id="TheTable">
    <table th:each="rectangle: ${rectangles}">
      <tr th:object="${rectangle}"><td th:text="${rectangle[0]}"><td><a th:href ="${rectangle[1]}">details</a></td></tr>
   </table>
+  </div>
   <br>
 <a style="border: 1px solid black; background-color: white;" th:href="@{/newrectangle}">New Rectangle</a>
 </div>
