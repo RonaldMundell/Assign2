@@ -120,7 +120,7 @@ public class Main {
   public String handleBrowserRectangleSaving(Map<String, Object> model, Rectangle rectangle) throws Exception {
       try (Connection connection = dataSource.getConnection()) {
         Statement stmt = connection.createStatement();
-        String sql = "DELETE FROM rectanlges WHERE id='1'";//"+rectangle.getId()+"'";
+        String sql = "DELETE FROM rectangle WHERE id="+rectangle.getId()+"'";
         stmt.executeUpdate(sql);
         return "redirect:/";
       } catch (Exception e) {
