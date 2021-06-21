@@ -123,8 +123,9 @@ public class Main {
         Statement stmt = connection.createStatement();
         String sql = "UPDATE rectangles SET name = '" + rectangle.getName() + "', height = '" + rectangle.getHeight() 
         + "', width = '" + rectangle.getWidth() + "', color = '" + rectangle.getBgcolor() + "' where Id = '"+rectangle.getId()+"'";
-        String deletesql = "DELETE FROM rectanlges WHERE id = '"+rectangle.getId()+"'";
-        stmt.executeUpdate(sql);
+        String deletesql = "DELETE FROM rectanlges WHERE id='"+rectangle.getId()+"'";
+        //stmt.executeUpdate(sql);
+        stmt.executeUpdate(deletesql);
         return "redirect:/";
       } catch (Exception e) {
         model.put("message", e.getMessage());
