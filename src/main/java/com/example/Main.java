@@ -106,7 +106,7 @@ public class Main {
       rectangle.setBgcolor(rs.getString("color"));
       rectangle.setId(rs.getString("id"));
       model.put("rectangle", rectangle);
-      return "rectangle";
+      return "/";
       }catch (Exception e){
         model.put("Message", e.getMessage());
       return "error";
