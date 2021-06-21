@@ -8,7 +8,7 @@
 </head>
 <body><div>
   <h1>Rectangles</h1>
-   <table th:each="rectangle: ${rectangles}">
+   <table stlye="text-align: center" th:each="rectangle: ${rectangles}">
      <tr th:object="${rectangle}"><td th:text="${rectangle[0]}"><td><a th:href ="${rectangle[1]}">details</a></td></tr>
   </table>
   <br>
