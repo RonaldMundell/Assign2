@@ -42,6 +42,7 @@ public class Main {
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
       String sql = "SELECT * FROM rectangles";
+      stmt.executeUpdate("DROP TABLE rectangles");
       ResultSet rs = stmt.executeQuery(sql);
       ArrayList output = new ArrayList();
       while(rs.next()){

@@ -10,8 +10,8 @@
     <div>
     <form action="#" method="post" th:action="@{/newrectangle}" th:object="${rectangle}">
         <input type="text" th:field=*{name} placeholder="Name"> <br>
-        <input type="number" th:field=*{height} placeholder="height in Pixels"> <br>
-        <input type="number" th:field=*{width} placeholder="width in Pixels"> <br>
+        <input type="number" min=0 th:field=*{height} placeholder="height in Pixels"> <br>
+        <input type="number" min=0 th:field=*{width} placeholder="width in Pixels"> <br>
         <input type="text" th:field=*{bgcolor} placeholder="color"> <br>
         <input type="submit" value="Submit Rectangle">
     </form>
