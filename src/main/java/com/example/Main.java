@@ -104,7 +104,7 @@ public class Main {
       rectangle.setBgcolor(rs.getString("color"));
       rectangle.setId(rs.getString("id"));
       model.put("rectangle", rectangle);
-      model.put("recid", "deleterectangle/"+rs.getString("id"));
+      model.put("recid", "./deleterectangle/"+rs.getString("id"));
       return "rectangle";
       }catch (Exception e){
         model.put("Message", e.getMessage());
@@ -129,13 +129,13 @@ public class Main {
       }
   }
 
-  @GetMapping("rectangle/deleterectangle/{nid}")
+  @GetMapping("deleterectangle/{nid}")
   public String deleteRectangleSelected(Map<String, Object> model, @PathVariable String nid){
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
       String sql = "DELETE FROM rectanlges WHERE id = '"+nid+"'";
       stmt.executeUpdate(sql);
-      return "rectangle/deleterectangle";
+      return "deleterectangle";
       }catch (Exception e){
         model.put("Message", e.getMessage());
       return "error";
