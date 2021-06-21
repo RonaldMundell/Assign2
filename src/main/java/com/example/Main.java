@@ -124,11 +124,7 @@ public class Main {
         String sql = "UPDATE rectangles SET name = '" + rectangle.getName() + "', height = '" + rectangle.getHeight() 
         + "', width = '" + rectangle.getWidth() + "', color = '" + rectangle.getBgcolor() + "' where Id = '"+rectangle.getId()+"'";
         String deletesql = "DELETE FROM rectanlges WHERE id = '"+rectangle.getId()+"'";
-        if(model.get("delete") == "Checked"){
-        stmt.executeUpdate(sql);
-        }else{
         stmt.executeUpdate(deletesql);
-        }
         return "redirect:/";
       } catch (Exception e) {
         model.put("message", e.getMessage());
