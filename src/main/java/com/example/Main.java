@@ -104,7 +104,7 @@ public class Main {
       rectangle.setBgcolor(rs.getString("color"));
       rectangle.setId(rs.getString("id"));
       model.put("rectangle", rectangle);
-      model.put("recid", "@/deleterectangle/"+rs.getString("id"));
+      model.put("recid", "deleterectangle/"+rs.getString("id"));
       return "rectangle";
       }catch (Exception e){
         model.put("Message", e.getMessage());
@@ -129,7 +129,7 @@ public class Main {
       }
   }
 
-  @GetMapping("deleterectangle/{did}")
+  @GetMapping("/deleterectangle/{did}")
   public String deleteRectangleSelected(Map<String, Object> model, @PathVariable String did){
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
@@ -145,28 +145,6 @@ public class Main {
   @PostMapping( "deleterectangle")
   public String deletepage(Map<String, Object> model){   
         return "redirect:/";
-  }
-
-
-  @RequestMapping("/db")
-  String db(Map<String, Object> model) {
-    try (Connection connection = dataSource.getConnection()) {
-      Statement stmt = connection.createStatement();
-      stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
-      stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
-      ResultSet rs = stmt.executeQuery("SELECT tick FROM ticks");
-
-      ArrayList<String> output = new ArrayList<String>();
-      while (rs.next()) {
-        output.add("Read from DB: " + rs.getTimestamp("tick"));
-      }
-
-      model.put("records", output);
-      return "db";
-    } catch (Exception e) {
-      model.put("message", e.getMessage());
-      return "error";
-    }
   }
 
   @Bean
