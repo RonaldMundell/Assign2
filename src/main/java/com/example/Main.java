@@ -106,7 +106,7 @@ public class Main {
       rectangle.setBgcolor(rs.getString("color"));
       rectangle.setId(rs.getString("id"));
       model.put("rectangle", rectangle);
-      return "/";
+      return "rectangle";
       }catch (Exception e){
         model.put("Message", e.getMessage());
       return "error";
@@ -120,9 +120,7 @@ public class Main {
   public String handleBrowserRectangleSaving(Map<String, Object> model, Rectangle rectangle) throws Exception {
       try (Connection connection = dataSource.getConnection()) {
         Statement stmt = connection.createStatement();
-       // String sql = "UPDATE rectangles SET name = '" + rectangle.getName() + "', height = '" + rectangle.getHeight() 
-       // + "', width = '" + rectangle.getWidth() + "', color = '" + rectangle.getBgcolor() + "' where Id = '"+rectangle.getId()+"'";
-        String sql = "DELETE FROM rectanlges WHERE id='"+rectangle.getId()+"'";
+        String sql = "DELETE FROM rectanlges WHERE id="+rectangle.getId();
         stmt.executeUpdate(sql);
         return "redirect:/";
       } catch (Exception e) {
