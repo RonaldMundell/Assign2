@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="./stylesheet/style.css" />
 </head>
 <body>
-    <h1>Create a New Rectangle</h1>
     <div>
+    <h1>Create a New Rectangle</h1>
     <form action="#" method="post" th:action="@{/newrectangle}" th:object="${rectangle}">
         <input type="text" th:field=*{name} placeholder="Name"> <br>
         <input type="number" min=0 th:field=*{height} placeholder="height in Pixels"> <br>

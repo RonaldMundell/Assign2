@@ -5,9 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE-edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<h1>Details</h1>
+
 <body  style=" font-family: Arial, Helvetica, sans-serif; padding: 30px; align-content: center; background-color: red;">
 <div style="align-items: center; background-color: lightgray; height: 800px; border: 20px;">
+    <h1>Rectangles</h1>
     <form action="#" method="post" th:action="@{/rectangle}" th:object="${rectangle}">
         <input type="text" disabled="disabled" th:field=*{name} placeholder="Name"> <br>
         <input type="text" disabled="disabled" th:field=*{height} placeholder="height in Pixels"> <br>

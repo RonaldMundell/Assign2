@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./stylesheet/style.css"  />
 </head>
 <body><div>
-<h1>Rectangles</h1>
+  <h1>Rectangles</h1>
   <div id="TheTable">
    <table th:each="rectangle: ${rectangles}">
      <tr th:object="${rectangle}"><td th:text="${rectangle[0]}"><td><a th:href ="${rectangle[1]}">details</a></td></tr>
